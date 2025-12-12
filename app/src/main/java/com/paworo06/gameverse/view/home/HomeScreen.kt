@@ -101,7 +101,7 @@ fun HomeHeader() {
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = "Listo para jugar hoy?",
+                text = "¿Listo para jugar hoy?",
                 color = TextGray,
                 fontSize = 14.sp
             )
