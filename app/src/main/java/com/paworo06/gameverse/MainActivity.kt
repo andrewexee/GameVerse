@@ -21,6 +21,7 @@ import com.paworo06.gameverse.ui.theme.GameVerseTheme
 import com.paworo06.gameverse.view.profile.ProfileScreen
 import com.paworo06.gameverse.view.cart.CartScreen
 import com.paworo06.gameverse.view.login.LoginScreen
+import com.paworo06.gameverse.view.explore.ExploreScreen
 import com.paworo06.gameverse.view.navegation.BottomNavigationBar
 
 // Define las posibles pantallas como un Sealed Class para seguridad de tipos
@@ -31,6 +32,8 @@ sealed class ScreenState(val route: String) {
     object Explore : ScreenState("explore_route")
 
     object Login : ScreenState("login_route")
+
+    object Register : ScreenState("register_route")
 }
 
 
@@ -90,7 +93,12 @@ fun MainAppStructure() {
                     ScreenState.Cart.route -> CartScreen()
                     // Puedes usar un placeholder o las pantallas reales aquí
                     ScreenState.Home.route -> PlaceholderScreen(name = "Inicio")
-                    ScreenState.Explore.route -> PlaceholderScreen(name = "Explorar")
+
+                    ScreenState.Explore.route -> ExploreScreen()
+
+                    ScreenState.Login.route -> LoginScreen(
+                        onLoginSuccess = { currentScreen = ScreenState.Home.route }
+                    )
                 }
             }
         }
